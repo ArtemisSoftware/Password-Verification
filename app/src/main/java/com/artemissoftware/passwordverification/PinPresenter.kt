@@ -1,24 +1,33 @@
 package com.artemissoftware.passwordverification
 
+import android.view.View
 import com.artemissoftware.passwordverification.models.Pin
+import java.lang.StringBuilder
 
-class PinPresenter(private val view: PinContract.View, private val pin: Pin = Pin()) : PinContract.Presenter{
+class PinPresenter(
+    private val view: PinContract.View,
+    private val pin: Pin = Pin()
+) : PinContract.Presenter{
 
 
     override fun loadNextScreen() {
-        TODO("Not yet implemented")
+        view.navigateNextScreen();
     }
 
     override fun defaultSettings() {
-        TODO("Not yet implemented")
+        view.setButtonColor(R.drawable.btn_ash);
+        view.showButtonClick(false);
+        view.showTickVisibility(View.INVISIBLE);
     }
 
     override fun verifyEntries() {
-        TODO("Not yet implemented")
+        view.setButtonColor(R.drawable.btn_red)
+        view.showButtonClick(true)
+        view.showTickVisibility(View.VISIBLE)
     }
 
     override fun savePassword(password: String) {
-        TODO("Not yet implemented")
+        pin.password = password
     }
 
     override fun appendIndvidualPassword(
@@ -27,6 +36,7 @@ class PinPresenter(private val view: PinContract.View, private val pin: Pin = Pi
         third: String,
         fourth: String
     ): String {
-        TODO("Not yet implemented")
+
+        return  StringBuilder().append(first).append(second).append(third).append(fourth).toString()
     }
 }

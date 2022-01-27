@@ -6,8 +6,7 @@ import android.view.View
 import androidx.core.widget.doOnTextChanged
 import com.artemissoftware.passwordverification.databinding.ActivityMainBinding
 import android.widget.EditText
-
-
+import android.widget.Toast
 
 
 class MainActivity : AppCompatActivity(), PinContract.View {
@@ -84,15 +83,15 @@ class MainActivity : AppCompatActivity(), PinContract.View {
 
 
     override fun showButtonClick(b: Boolean) {
-        TODO("Not yet implemented")
+        binding.btnChoosePin.isEnabled = b;
     }
 
     override fun setButtonColor(color: Int) {
-        TODO("Not yet implemented")
+        binding.btnChoosePin.background = resources.getDrawable(color);
     }
 
     override fun navigateNextScreen() {
-        TODO("Not yet implemented")
+        Toast.makeText(this, "Your intent goes here", Toast.LENGTH_SHORT).show();
     }
 
     override fun showError(error: String?) {
@@ -100,6 +99,7 @@ class MainActivity : AppCompatActivity(), PinContract.View {
     }
 
     override fun showTickVisibility(value: Int) {
-        TODO("Not yet implemented")
+        binding.positivechecked1.visibility = value
+        binding.positivechecked2.visibility = value
     }
 }
